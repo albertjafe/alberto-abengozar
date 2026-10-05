@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://albertoabengozar.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alberto Abengózar Calonge · Pianista y compositor">
+<meta property="og:description" content="Pianista y compositor formado en Musikene, Colonia y el Mozarteum de Salzburgo. Biografía, vídeos y contacto.">
+<meta property="og:image" content="https://albertoabengozar.com/alberto-abengozar.jpg">
+<meta property="og:url" content="https://albertoabengozar.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0b0c'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' text-anchor='middle' fill='%23f4f4f2'%3EA%3C/text%3E%3C/svg%3E">
+<title>Alberto Abengózar Calonge</title>
+<meta name="description" content="Alberto Abengózar Calonge, pianista y compositor (Manzanares, 1999). Biografía, vídeos y contacto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Layout: escenario negro con el retrato (la portada del dosier) al abrir y otra escena negra al cerrar, con la foto al piano fundida en el fondo; entre ambas, una columna de lectura con filetes finos. */
+:root {
+  --bg: #f5f5f3;
+  --surface: #ffffff;
+  --fg: #17181c;
+  --muted: #4d5059;
+  --faint: #767983;
+  --rule: #d9dbe0;
+  --accent: #23408e;
+  --accent-soft: #e3e8f4;
+  --stage: #0b0b0c;
+  --stage-line: #24252b;
+  --stage-fg: #f4f4f2;
+  --stage-muted: #b5b6bb;
+  --stage-accent: #8fa8e6;
+  --display: "Bodoni Moda", "Didot", "Bodoni 72", "Times New Roman", serif;
+  --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --measure: 40rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111215; --surface: #17181c; --fg: #ebebee; --muted: #a9acb4; --faint: #868994;
+    --rule: #2b2d33; --accent: #8fa8e6; --accent-soft: #1c2438; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111215; --surface: #17181c; --fg: #ebebee; --muted: #a9acb4; --faint: #868994;
+  --rule: #2b2d33; --accent: #8fa8e6; --accent-soft: #1c2438; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 1.0625rem/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Barra superior + teclado */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--stage); color: var(--stage-fg); border-bottom: 1px solid var(--stage-line); }
+.nav-in { max-width: 72rem; margin: 0 auto; padding: 0.8rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.nav-name { font-family: var(--display); font-size: 1.05rem; color: var(--stage-fg); text-decoration: none; white-space: nowrap; }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.nav-links a { color: var(--stage-muted); text-decoration: none; }
+.nav-links a:hover, .nav-links a[aria-current="true"] { color: var(--stage-fg); }
+
+/* Escenario */
+.stage { background: var(--stage); color: var(--stage-fg); overflow: hidden; }
+.stage-in { max-width: 72rem; margin: 0 auto; padding-inline: 1.25rem; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); align-items: end; gap: 2rem; }
+.stage-text { padding-block: 4.5rem 4rem; min-width: 0; }
+.eyebrow { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stage-accent); margin: 0 0 1.5rem; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 7.4vw, 5.6rem); line-height: 0.98; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+h1 em { display: block; font-style: italic; color: var(--stage-muted); font-size: 0.72em; margin-top: 0.15em; }
+.route { list-style: none; margin: 2.2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.55rem; font-size: 0.86rem; color: var(--stage-muted); }
+.route li { display: flex; align-items: center; gap: 0.55rem; animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+.route li + li::before { content: ""; width: 1.4rem; height: 1px; background: var(--stage-line); }
+.route li:last-child { color: var(--stage-fg); }
+.route li:nth-child(1) { animation-delay: .15s } .route li:nth-child(2) { animation-delay: .27s }
+.route li:nth-child(3) { animation-delay: .39s } .route li:nth-child(4) { animation-delay: .51s }
+.route li:nth-child(5) { animation-delay: .63s } .route li:nth-child(6) { animation-delay: .75s }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.stage-meta { margin: 1.4rem 0 0; color: var(--stage-muted); font-size: 0.98rem; line-height: 1.6; max-width: 31rem; }
+.stage-meta strong { color: var(--stage-fg); font-weight: 500; }
+.stage-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.2rem; }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0.6rem 1.2rem; border: 1px solid var(--stage-muted); color: var(--stage-fg); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.04em; background: transparent; font-family: var(--body); cursor: pointer; transition: background-color .2s, color .2s, border-color .2s; }
+.btn:hover { border-color: var(--stage-fg); }
+.btn-solid { background: var(--stage-fg); color: var(--stage); border-color: var(--stage-fg); }
+.btn-solid:hover { background: transparent; color: var(--stage-fg); }
+.portrait { margin: 0; align-self: stretch; display: flex; align-items: flex-end; min-width: 0; }
+.portrait img { display: block; width: 100%; max-width: 100%; max-height: 40rem; object-fit: cover; object-position: center top;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 22%), linear-gradient(to top, transparent 0, #000 12%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 22%), linear-gradient(to top, transparent 0, #000 12%); mask-composite: intersect;
+  animation: develop 1.4s ease-out both; }
+@keyframes develop { from { opacity: 0.25; filter: grayscale(1) brightness(.7); } to { opacity: 1; filter: none; } }
+
+/* Contenido */
+main { padding-inline: 1.25rem; }
+.section { max-width: 72rem; margin: 0 auto; padding-block: 4.5rem; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 2.5rem; }
+.section:first-child { border-top: 0; }
+.section > header, .section > div { min-width: 0; }
+h2 { font-family: var(--display); font-weight: 400; font-size: 2rem; line-height: 1.1; margin: 0; text-wrap: balance; }
+.label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin: 0.6rem 0 0; }
+.prose { max-width: var(--measure); }
+.prose p { margin: 0 0 1.15em; }
+.lede { font-family: var(--display); font-size: 1.42rem; line-height: 1.45; margin: 0 0 1.3rem; max-width: var(--measure); text-wrap: pretty; }
+
+/* Destacados */
+.timeline { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.timeline li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.timeline li:first-child { padding-top: 0; }
+.timeline time { font-family: var(--display); font-size: 1.5rem; line-height: 1.2; color: var(--accent); font-variant-numeric: tabular-nums; }
+.timeline b { font-weight: 600; }
+.timeline span { display: block; color: var(--muted); font-size: 0.95rem; }
+
+/* Biografía completa */
+.more { margin-top: 0.4rem; border-top: 1px solid var(--rule); }
+.more summary { cursor: pointer; list-style: none; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; font-weight: 500; color: var(--accent); }
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after { content: "+"; font-family: var(--display); font-size: 1.6rem; line-height: 1; transition: transform .25s; }
+.more[open] summary::after { transform: rotate(45deg); }
+.bio-tools { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 0.5rem; color: var(--faint); font-size: 0.88rem; }
+.copy { font: 500 0.76rem var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: none; border: 1px solid var(--rule); padding: 0.4rem 0.75rem; cursor: pointer; min-height: 36px; }
+.copy:hover { border-color: var(--accent); }
+
+/* Vídeos */
+.videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem; }
+.video { position: relative; display: flex; flex-direction: column; gap: 0.35rem; padding: 1.2rem 1.25rem 1.3rem; background: var(--surface); border: 1px solid var(--rule); text-decoration: none; color: var(--fg); overflow: hidden; transition: border-color .2s; }
+.video:hover { border-color: var(--accent); }
+.video .play { width: 2.4rem; height: 2.4rem; border: 1px solid var(--accent); border-radius: 50%; display: grid; place-items: center; margin-bottom: 0.6rem; color: var(--accent); transition: background-color .2s, color .2s; }
+.video:hover .play { background: var(--accent); color: var(--surface); }
+.video .play svg { width: 0.8rem; height: 0.8rem; fill: currentColor; margin-left: 2px; }
+.video .work { font-family: var(--display); font-size: 1.2rem; line-height: 1.25; }
+.video .where { color: var(--muted); font-size: 0.9rem; }
+.draft { display: inline-block; font-size: 0.78rem; color: var(--faint); border: 1px dashed var(--rule); padding: 0.15rem 0.5rem; margin-top: 0.4rem; align-self: flex-start; }
+
+
+/* Contacto */
+.contact { display: grid; gap: 1.1rem; max-width: var(--measure); }
+.contact-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
+.contact-value { font-family: var(--display); font-size: clamp(1.35rem, 4vw, 1.9rem); color: var(--fg); text-decoration: none; overflow-wrap: anywhere; }
+.contact p { margin: 0; color: var(--muted); }
+
+
+/* Escena final: contacto sobre la foto al piano, fundida en negro */
+.encore { position: relative; background: var(--stage); color: var(--stage-fg); overflow: hidden; padding-inline: 1.25rem;
+  --fg: var(--stage-fg); --muted: var(--stage-muted); --faint: var(--stage-muted); --rule: var(--stage-line); --accent: var(--stage-accent); }
+.encore-photo { position: absolute; top: 0; right: 0; height: 100%; width: min(68%, 60rem); max-width: 100%; object-fit: cover; object-position: 30% 30%; opacity: 0.55;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 45%), linear-gradient(to top, transparent 0, #000 30%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 45%), linear-gradient(to top, transparent 0, #000 30%); mask-composite: intersect;
+  filter: blur(1.5px); transform: scale(1.02); }
+.encore .section { position: relative; border-top: 0; padding-block: 6.5rem 7rem; }
+.encore .contact { max-width: 30rem; }
+@media (max-width: 860px) {
+  .encore { padding-top: 15rem; }
+  .encore-photo { width: 100%; height: 22rem; object-position: 35% 25%; opacity: 0.5;
+    -webkit-mask-image: linear-gradient(to top, transparent 0, #000 55%); mask-image: linear-gradient(to top, transparent 0, #000 55%); }
+  .encore .section { padding-block: 0 4rem; }
+}
+
+footer { background: var(--stage); color: var(--stage-muted); font-size: 0.85rem; border-top: 1px solid var(--stage-line); }
+.foot-in { max-width: 72rem; margin: 0 auto; padding: 2rem 1.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; }
+
+@media (max-width: 860px) {
+  .stage-in { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .portrait { order: -1; margin-inline: -1.25rem; }
+  .portrait img { max-height: 30rem; object-position: center 12%; -webkit-mask-image: linear-gradient(to top, transparent 0, #000 25%); mask-image: linear-gradient(to top, transparent 0, #000 25%); }
+  .stage-text { padding-block: 2.25rem 3.25rem; }
+  .section { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-block: 3.25rem; }
+  .nav-links { gap: 1rem; }
+}
+@media (max-width: 560px) {
+  .nav-links li:nth-child(n+3) { display: none; }
+  .nav-name { font-size: 0.95rem; }
+  .lede { font-size: 1.22rem; }
+  .timeline li { grid-template-columns: 3.6rem minmax(0, 1fr); gap: 0.9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .route li, .portrait img { animation: none; }
+}
+
+/* Selector de idioma */
+.lang { display: flex; gap: 2px; border: 1px solid var(--stage-line); padding: 2px; }
+.lang button { font: 600 0.7rem var(--body); letter-spacing: 0.08em; color: var(--stage-muted); background: transparent; border: 0; padding: 0.35rem 0.5rem; min-height: 30px; cursor: pointer; }
+.lang button:hover { color: var(--stage-fg); }
+.lang button[aria-pressed="true"] { background: var(--stage-fg); color: var(--stage); }
+@media (max-width: 560px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Secciones" data-i18n-attr="aria-label:navLabel">
+  <div class="nav-in">
+    <a class="nav-name" href="#inicio">Alberto Abengózar</a>
+    <ul class="nav-links">
+      <li><a href="#biografia" data-i18n="navBio">Biografía</a></li>
+      <li><a href="#videos" data-i18n="navVideos">Vídeos</a></li>
+      <li><a href="#contacto" data-i18n="navContact">Contacto</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Idioma · Language · Sprache">
+      <button type="button" data-lang="es" lang="es" aria-pressed="true" title="Español">ES</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false" title="English">EN</button>
+      <button type="button" data-lang="de" lang="de" aria-pressed="false" title="Deutsch">DE</button>
+    </div>
+  </div>
+</nav>
+
+<header class="stage" id="inicio">
+  <div class="stage-in">
+    <div class="stage-text">
+      <p class="eyebrow" data-i18n="role">Pianista y compositor</p>
+      <h1>Alberto Abengózar <em>Calonge</em></h1>
+      <ol class="route" aria-label="Formación" data-i18n-attr="aria-label:routeLabel">
+        <li>Manzanares</li><li>Ciudad Real</li><li>Madrid</li><li>San Sebastián</li><li data-i18n="cityKoeln">Colonia</li><li data-i18n="citySalzburg">Salzburgo</li>
+      </ol>
+      <p class="stage-meta" data-i18n="heroMeta">Estudia en la <strong>Universidad Mozarteum de Salzburgo</strong> con Claudio Martínez-Mehner. Finalista del Concurso Internacional de Piano Ciudad de Vigo en 2025, con el Premio «Rosa Sabater» al mejor pianista español, y de nuevo en su fase final en 2026.</p>
+      <div class="stage-cta">
+        <a class="btn btn-solid" href="#contacto" data-i18n="ctaBook">Contratar un recital</a>
+        <a class="btn" href="#videos" data-i18n="ctaListen">Escuchar</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="alberto-abengozar.jpg" width="1000" height="1499" alt="Retrato de Alberto Abengózar Calonge, con camisa negra y los brazos cruzados, sobre fondo negro." data-i18n-attr="alt:portraitAlt">
+    </figure>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="destacados" aria-labelledby="h-destacados">
+    <header><h2 id="h-destacados" data-i18n="hlTitle">Destacados</h2><p class="label" data-i18n="hlLabel">Concursos y recitales</p></header>
+    <ol class="timeline" reversed>
+      <li><time datetime="2026">2026</time><div data-i18n="hl2026"><b>Fase final del X Concurso Internacional de Piano Ciudad de Vigo</b><span>Entre la docena de pianistas que llegaron a la fase final, en una edición que reunió a 400 intérpretes de 77 países.</span></div></li>
+      <li><time datetime="2025">2025</time><div data-i18n="hl2025a"><b>Finalista del IX Concurso Internacional de Piano Ciudad de Vigo</b><span>Uno de los cinco finalistas en el Teatro García Barbón. Premio «Rosa Sabater» al mejor pianista español.</span></div></li>
+      <li><time datetime="2025">2025</time><div data-i18n="hl2025b"><b>Recitales como ganador en Don Benito y Pedro Muñoz</b><span>Recital de apertura del Concurso «Ciudad de Don Benito» y concierto inaugural de la fase final del II Concurso de Música «Villa del Mayo Manchego».</span></div></li>
+      <li><time datetime="2024">2024</time><div data-i18n="hl2024"><b>Primer Premio del Concurso Nacional de Piano «Ciudad de Don Benito»</b><span>Y Primer Premio y Mención de Honor en el I Concurso de Música «Villa del Mayo Manchego», en Pedro Muñoz.</span></div></li>
+      <li><time datetime="2023">2023</time><div data-i18n="hl2023"><b>Premio al mejor intérprete castellanomanchego</b><span>XLII Concurso Nacional de Jóvenes Pianistas «Ciudad de Albacete».</span></div></li>
+      <li><time datetime="2022">2022</time><div data-i18n="hl2022"><b>Solista con la Orquesta Sinfónica de Musikene</b><span>Concierto n.º 2 de Rachmaninov, bajo la dirección de Erik Nielsen, en la Semana Lila de Musikene.</span></div></li>
+      <li><time datetime="2019">2019</time><div data-i18n="hl2019"><b>Recital en la 80.ª Quincena Musical de San Sebastián</b><span>Seleccionado como alumno de Musikene.</span></div></li>
+      <li><time datetime="2017">2017</time><div data-i18n="hl2017"><b>Premio Nacional de Educación en Música</b><span>Por el rendimiento académico del curso 2016–2017.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="section" id="biografia" aria-labelledby="h-bio">
+    <header><h2 id="h-bio" data-i18n="bioTitle">Biografía</h2><p class="label" data-i18n="bioLabel">España · Alemania · Austria</p></header>
+    <div class="prose">
+      <p class="lede" data-i18n="bioLede">Pianista y compositor formado en Musikene, en la Hochschule für Musik und Tanz de Colonia y, actualmente, en la Universidad Mozarteum de Salzburgo con Claudio Martínez-Mehner.</p>
+      <p data-i18n="bioShort">Finalista del Concurso Internacional de Piano Ciudad de Vigo, donde recibió el Premio «Rosa Sabater» al mejor pianista español, ha ganado además los concursos de Don Benito y Pedro Muñoz, que le invitaron a volver como recitalista. Como solista ha interpretado el Concierto n.º 2 de Rachmaninov con la Orquesta Sinfónica de Musikene bajo la dirección de Erik Nielsen. Escribe música para piano y la incluye en sus recitales.</p>
+      <details class="more" id="bio-full">
+        <summary data-i18n="bioMore">Biografía completa</summary>
+        <div id="bio-text">
+          <p data-i18n="bio1">Alberto Abengózar Calonge (Manzanares, Ciudad Real, 1999) continúa sus estudios en la Universidad Mozarteum de Salzburgo con Claudio Martínez-Mehner, con quien completó previamente el Máster en Piano en la Hochschule für Musik und Tanz de Colonia, donde trabajó también con Nina Tichman. Ha recibido además clases magistrales de Robert Levin y Alexander Melnikov.</p>
+          <p data-i18n="bio2">En 2025 fue uno de los cinco finalistas del IX Concurso Internacional de Piano Ciudad de Vigo, donde obtuvo el Premio «Rosa Sabater» al mejor pianista español, y en 2026 volvió a alcanzar la fase final de su X edición. En 2024 ganó el Primer Premio del Concurso Nacional de Piano «Ciudad de Don Benito» y el Primer Premio y la Mención de Honor del I Concurso de Música «Villa del Mayo Manchego» de Pedro Muñoz, y en la siguiente edición de ambos ofreció un recital como ganador; en Don Benito, el recital de apertura del concurso. En 2023 recibió el premio al mejor intérprete castellanomanchego en el XLII Concurso Nacional de Jóvenes Pianistas «Ciudad de Albacete». Ha sido premiado también en los concursos de Sigüenza, Leganés y Sevilla.</p>
+          <p data-i18n="bio3">Inició sus estudios en la Escuela Municipal de Música «Guillermo Calero» de Manzanares y los continuó con Alfredo Bravo en el Conservatorio Profesional «Marcos Redondo» de Ciudad Real, donde obtuvo el Premio Extraordinario de Enseñanzas Artísticas Profesionales de Castilla-La Mancha y el Premio Nacional de Educación al rendimiento académico en Música. Más tarde estudió con Iván Cítera en la Universidad Alfonso X el Sabio de Madrid y realizó los estudios superiores en Musikene (San Sebastián) con Marta Zabaleta. Allí fue seleccionado en 2019 para ofrecer un recital en la 80.ª edición de la Quincena Musical de San Sebastián y ganó el concurso de solistas del centro, con el que interpretó en 2022 el Concierto n.º 2 de Rachmaninov junto a la Orquesta Sinfónica de Musikene, dirigida por Erik Nielsen. Posteriormente amplió su formación en Madrid con Luis Fernando Pérez.</p>
+          <p data-i18n="bio4">Ha actuado como solista y en formaciones de cámara en España, Alemania, Francia y Hungría. Como compositor, escribe principalmente para piano solo y ha interpretado obra propia en sus recitales en España y Alemania. Trabaja además en la transcripción al piano de música española.</p>
+        </div>
+        <div class="bio-tools">
+          <button class="copy" type="button" id="copy-bio" data-i18n="copyBio">Copiar biografía</button>
+          <span data-i18n="copyBioNote">Para programas de mano y notas de prensa.</span>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="videos" aria-labelledby="h-videos">
+    <header><h2 id="h-videos" data-i18n="videosTitle">Vídeos</h2><p class="label" data-i18n="videosLabel">En directo</p></header>
+    <div class="videos">
+      <a class="video" href="#videos">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        <span class="work" data-i18n="v1work">Obra del vídeo 1</span>
+        <span class="where" data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span>
+        <span class="draft" data-i18n="vDraft">Falta el enlace</span>
+      </a>
+      <a class="video" href="#videos">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        <span class="work" data-i18n="v2work">Obra del vídeo 2</span>
+        <span class="where" data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span>
+        <span class="draft" data-i18n="vDraft">Falta el enlace</span>
+      </a>
+      <a class="video" href="#videos">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        <span class="work" data-i18n="v3work">Obra del vídeo 3</span>
+        <span class="where" data-i18n="vVigo25">Final del Concurso Ciudad de Vigo, 2025</span>
+        <span class="draft" data-i18n="vDraft">Falta el enlace</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<div class="encore">
+  <img class="encore-photo" src="alberto-abengozar-piano.jpg" width="1600" height="1067" alt="Alberto Abengózar al piano, en blanco y negro." data-i18n-attr="alt:pianoAlt" loading="lazy">
+  <section class="section encore-in" id="contacto" aria-labelledby="h-contacto">
+    <header><h2 id="h-contacto" data-i18n="contactTitle">Contacto</h2><p class="label" data-i18n="contactLabel">Recitales y colaboraciones</p></header>
+    <div class="contact">
+      <div class="contact-row">
+        <a class="contact-value" id="email" href="mailto:albertjafe@gmail.com">albertjafe@gmail.com</a>
+        <button class="copy" type="button" id="copy-email" data-i18n="copy">Copiar</button>
+      </div>
+      <p data-i18n="contactText">Disponible para recitales en noviembre y diciembre de 2026 y en la temporada 2027. Envío dosier, programas y vídeos completos a quien lo pida.</p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <span>© 2026 Alberto Abengózar Calonge</span>
+    <span data-i18n="role">Pianista y compositor</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Traducciones (el español está en el propio HTML) ─────────────────────
+  var T = {
+    en: {
+      navLabel: 'Sections', navBio: 'Biography', navVideos: 'Videos', navContact: 'Contact',
+      role: 'Pianist and composer', routeLabel: 'Training', cityKoeln: 'Cologne', citySalzburg: 'Salzburg',
+      heroMeta: 'Studies at the <strong>Mozarteum University Salzburg</strong> with Claudio Martínez-Mehner. Finalist of the Ciudad de Vigo International Piano Competition in 2025, where he received the “Rosa Sabater” Prize for the best Spanish pianist, and again in its final stage in 2026.',
+      ctaBook: 'Book a recital', ctaListen: 'Listen',
+      pianoAlt: 'Alberto Abengózar at the piano, in black and white.',
+      portraitAlt: 'Portrait of Alberto Abengózar Calonge in a black shirt with his arms crossed, against a black background.',
+      hlTitle: 'Highlights', hlLabel: 'Competitions and recitals',
+      hl2026: '<b>Final stage of the 10th Ciudad de Vigo International Piano Competition</b><span>Among the dozen pianists who reached the final stage of an edition that brought together 400 performers from 77 countries.</span>',
+      hl2025a: '<b>Finalist, 9th Ciudad de Vigo International Piano Competition</b><span>One of five finalists at the Teatro García Barbón. “Rosa Sabater” Prize for the best Spanish pianist.</span>',
+      hl2025b: '<b>Winner’s recitals in Don Benito and Pedro Muñoz</b><span>Opening recital of the “Ciudad de Don Benito” Competition and the concert opening the final stage of the 2nd “Villa del Mayo Manchego” Music Competition.</span>',
+      hl2024: '<b>First Prize, “Ciudad de Don Benito” National Piano Competition</b><span>Also First Prize and an Honourable Mention at the 1st “Villa del Mayo Manchego” Music Competition in Pedro Muñoz.</span>',
+      hl2023: '<b>Prize for the best performer from Castilla-La Mancha</b><span>42nd “Ciudad de Albacete” National Competition for Young Pianists.</span>',
+      hl2022: '<b>Soloist with the Musikene Symphony Orchestra</b><span>Rachmaninoff’s Piano Concerto No. 2, conducted by Erik Nielsen, during Musikene’s Semana Lila.</span>',
+      hl2019: '<b>Recital at the 80th Quincena Musical de San Sebastián</b><span>Selected as a student of Musikene.</span>',
+      hl2017: '<b>National Education Award in Music</b><span>For academic achievement in the 2016–2017 school year.</span>',
+      bioTitle: 'Biography', bioLabel: 'Spain · Germany · Austria',
+      bioLede: 'Pianist and composer trained at Musikene, at the Hochschule für Musik und Tanz Köln and, currently, at the Mozarteum University Salzburg with Claudio Martínez-Mehner.',
+      bioShort: 'A finalist of the Ciudad de Vigo International Piano Competition, where he received the “Rosa Sabater” Prize for the best Spanish pianist, he has also won the Don Benito and Pedro Muñoz competitions, both of which invited him back as a recitalist. As a soloist he has performed Rachmaninoff’s Piano Concerto No. 2 with the Musikene Symphony Orchestra under Erik Nielsen. He writes music for the piano and includes it in his recitals.',
+      bioMore: 'Full biography',
+      bio1: 'Alberto Abengózar Calonge (Manzanares, Ciudad Real, 1999) is continuing his studies at the Mozarteum University Salzburg with Claudio Martínez-Mehner, with whom he previously completed his Master’s degree in Piano at the Hochschule für Musik und Tanz Köln, where he also worked with Nina Tichman. He has taken masterclasses with Robert Levin and Alexander Melnikov.',
+      bio2: 'In 2025 he was one of the five finalists of the 9th Ciudad de Vigo International Piano Competition, where he received the “Rosa Sabater” Prize for the best Spanish pianist, and in 2026 he again reached the final stage of its 10th edition. In 2024 he won First Prize at the “Ciudad de Don Benito” National Piano Competition, as well as First Prize and an Honourable Mention at the 1st “Villa del Mayo Manchego” Music Competition in Pedro Muñoz, and the following year he returned to both competitions to give a winner’s recital; in Don Benito, the competition’s opening recital. In 2023 he received the prize for the best performer from Castilla-La Mancha at the 42nd “Ciudad de Albacete” National Competition for Young Pianists. He has also won prizes at competitions in Sigüenza, Leganés and Seville.',
+      bio3: 'He began his studies at the “Guillermo Calero” Municipal Music School in Manzanares and continued them with Alfredo Bravo at the “Marcos Redondo” Conservatory in Ciudad Real, where he received the Extraordinary Prize for Professional Arts Education of Castilla-La Mancha and the National Education Award for academic achievement in music. He later studied with Iván Cítera at Alfonso X el Sabio University in Madrid and completed his higher studies at Musikene (San Sebastián) with Marta Zabaleta. There he was selected in 2019 to give a recital at the 80th Quincena Musical de San Sebastián, and he won the school’s soloist competition, which led to his 2022 performance of Rachmaninoff’s Piano Concerto No. 2 with the Musikene Symphony Orchestra under Erik Nielsen. He went on to study in Madrid with Luis Fernando Pérez.',
+      bio4: 'He has performed as a soloist and chamber musician in Spain, Germany, France and Hungary. As a composer he writes mainly for solo piano and has performed his own works in recitals in Spain and Germany. He is also working on piano transcriptions of Spanish music.',
+      copyBio: 'Copy biography', copyBioNote: 'For concert programmes and press releases.',
+      videosTitle: 'Videos', videosLabel: 'Live',
+      v1work: 'Piece for video 1', v2work: 'Piece for video 2', v3work: 'Piece for video 3',
+      vVigo26: 'Ciudad de Vigo International Piano Competition, 2026', vVigo25: 'Final, Ciudad de Vigo Competition, 2025', vDraft: 'Link missing',
+      contactTitle: 'Contact', contactLabel: 'Recitals and collaborations', copy: 'Copy',
+      contactText: 'Available for recitals in November and December 2026 and in the 2027 season. Dossier, programmes and full-length videos are available on request.',
+      _copied: 'Copied', _selected: 'Selected: copy it', _about: 'c.', _minutes: 'about {n} minutes'
+    },
+    de: {
+      navLabel: 'Bereiche', navBio: 'Biografie', navVideos: 'Videos', navContact: 'Kontakt',
+      role: 'Pianist und Komponist', routeLabel: 'Ausbildung', cityKoeln: 'Köln', citySalzburg: 'Salzburg',
+      heroMeta: 'Studiert an der <strong>Universität Mozarteum Salzburg</strong> bei Claudio Martínez-Mehner. Finalist des Internationalen Klavierwettbewerbs Ciudad de Vigo 2025, wo er den „Rosa Sabater“-Preis für den besten spanischen Pianisten erhielt, und 2026 erneut in der Finalphase.',
+      ctaBook: 'Konzert anfragen', ctaListen: 'Anhören',
+      pianoAlt: 'Alberto Abengózar am Flügel, in Schwarzweiß.',
+      portraitAlt: 'Porträt von Alberto Abengózar Calonge in schwarzem Hemd mit verschränkten Armen vor schwarzem Hintergrund.',
+      hlTitle: 'Höhepunkte', hlLabel: 'Wettbewerbe und Konzerte',
+      hl2026: '<b>Finalphase des X. Internationalen Klavierwettbewerbs Ciudad de Vigo</b><span>Unter den rund zwölf Pianisten, die die Finalphase einer Ausgabe mit 400 Teilnehmenden aus 77 Ländern erreichten.</span>',
+      hl2025a: '<b>Finalist des IX. Internationalen Klavierwettbewerbs Ciudad de Vigo</b><span>Einer von fünf Finalisten im Teatro García Barbón. „Rosa Sabater“-Preis für den besten spanischen Pianisten.</span>',
+      hl2025b: '<b>Preisträgerkonzerte in Don Benito und Pedro Muñoz</b><span>Eröffnungsrezital des Wettbewerbs „Ciudad de Don Benito“ und Eröffnungskonzert der Finalrunde des II. Musikwettbewerbs „Villa del Mayo Manchego“.</span>',
+      hl2024: '<b>Erster Preis beim Nationalen Klavierwettbewerb „Ciudad de Don Benito“</b><span>Außerdem Erster Preis und Ehrenvolle Erwähnung beim I. Musikwettbewerb „Villa del Mayo Manchego“ in Pedro Muñoz.</span>',
+      hl2023: '<b>Preis für den besten Interpreten aus Kastilien-La Mancha</b><span>XLII. Nationaler Wettbewerb für junge Pianisten „Ciudad de Albacete“.</span>',
+      hl2022: '<b>Solist mit dem Sinfonieorchester der Musikene</b><span>Rachmaninows 2. Klavierkonzert unter der Leitung von Erik Nielsen, in der „Semana Lila“ der Musikene.</span>',
+      hl2019: '<b>Rezital bei der 80. Quincena Musical de San Sebastián</b><span>Ausgewählt als Student der Musikene.</span>',
+      hl2017: '<b>Nationaler Bildungspreis im Fach Musik</b><span>Für herausragende Leistungen im Schuljahr 2016–2017.</span>',
+      bioTitle: 'Biografie', bioLabel: 'Spanien · Deutschland · Österreich',
+      bioLede: 'Pianist und Komponist, ausgebildet an der Musikene, an der Hochschule für Musik und Tanz Köln und derzeit an der Universität Mozarteum Salzburg bei Claudio Martínez-Mehner.',
+      bioShort: 'Als Finalist des Internationalen Klavierwettbewerbs Ciudad de Vigo erhielt er den „Rosa Sabater“-Preis für den besten spanischen Pianisten; außerdem gewann er die Wettbewerbe in Don Benito und Pedro Muñoz, die ihn anschließend erneut zu Klavierabenden einluden. Als Solist spielte er Rachmaninows 2. Klavierkonzert mit dem Sinfonieorchester der Musikene unter der Leitung von Erik Nielsen. Er komponiert für Klavier und nimmt eigene Werke in seine Programme auf.',
+      bioMore: 'Vollständige Biografie',
+      bio1: 'Alberto Abengózar Calonge (Manzanares, Ciudad Real, 1999) setzt sein Studium an der Universität Mozarteum Salzburg bei Claudio Martínez-Mehner fort, bei dem er zuvor seinen Master in Klavier an der Hochschule für Musik und Tanz Köln abgeschlossen hat; dort arbeitete er auch mit Nina Tichman. Meisterkurse besuchte er bei Robert Levin und Alexander Melnikov.',
+      bio2: '2025 war er einer der fünf Finalisten des IX. Internationalen Klavierwettbewerbs Ciudad de Vigo, wo er den „Rosa Sabater“-Preis für den besten spanischen Pianisten erhielt; 2026 erreichte er erneut die Finalphase der X. Ausgabe. 2024 gewann er den Ersten Preis beim Nationalen Klavierwettbewerb „Ciudad de Don Benito“ sowie den Ersten Preis und eine Ehrenvolle Erwähnung beim I. Musikwettbewerb „Villa del Mayo Manchego“ in Pedro Muñoz. Im folgenden Jahr kehrte er zu beiden Wettbewerben für ein Preisträgerkonzert zurück, in Don Benito mit dem Eröffnungsrezital. 2023 erhielt er beim XLII. Nationalen Wettbewerb für junge Pianisten „Ciudad de Albacete“ den Preis für den besten Interpreten aus Kastilien-La Mancha. Weitere Preise gewann er bei Wettbewerben in Sigüenza, Leganés und Sevilla.',
+      bio3: 'Seine Ausbildung begann er an der Städtischen Musikschule „Guillermo Calero“ in Manzanares und setzte sie bei Alfredo Bravo am Konservatorium „Marcos Redondo“ in Ciudad Real fort, wo er den Sonderpreis für künstlerische Berufsausbildung von Kastilien-La Mancha und den Nationalen Bildungspreis für herausragende Leistungen im Fach Musik erhielt. Anschließend studierte er bei Iván Cítera an der Universität Alfonso X el Sabio in Madrid und absolvierte sein Hochschulstudium an der Musikene (San Sebastián) bei Marta Zabaleta. Dort wurde er 2019 für ein Rezital bei der 80. Quincena Musical de San Sebastián ausgewählt und gewann den hochschulinternen Solistenwettbewerb, der ihn 2022 zu Rachmaninows 2. Klavierkonzert mit dem Sinfonieorchester der Musikene unter Erik Nielsen führte. Später vertiefte er seine Ausbildung in Madrid bei Luis Fernando Pérez.',
+      bio4: 'Als Solist und Kammermusiker trat er in Spanien, Deutschland, Frankreich und Ungarn auf. Als Komponist schreibt er vor allem für Klavier solo und hat eigene Werke in seinen Konzerten in Spanien und Deutschland aufgeführt. Außerdem arbeitet er an Klaviertranskriptionen spanischer Musik.',
+      copyBio: 'Biografie kopieren', copyBioNote: 'Für Programmhefte und Pressemitteilungen.',
+      videosTitle: 'Videos', videosLabel: 'Live',
+      v1work: 'Werk für Video 1', v2work: 'Werk für Video 2', v3work: 'Werk für Video 3',
+      vVigo26: 'Internationaler Klavierwettbewerb Ciudad de Vigo, 2026', vVigo25: 'Finale, Wettbewerb Ciudad de Vigo, 2025', vDraft: 'Link fehlt',
+      contactTitle: 'Kontakt', contactLabel: 'Konzerte und Zusammenarbeit', copy: 'Kopieren',
+      contactText: 'Verfügbar für Klavierabende im November und Dezember 2026 sowie in der Saison 2027. Dossier, Programme und vollständige Videos auf Anfrage.',
+      _copied: 'Kopiert', _selected: 'Markiert: bitte kopieren', _about: 'ca.', _minutes: 'etwa {n} Minuten'
+    }
+  };
+  var ES_EXTRA = { _copied: 'Copiado', _selected: 'Seleccionado: cópialo', _about: 'c.', _minutes: 'unos {n} minutos' };
+
+  var textEls = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
+  var attrEls = Array.prototype.slice.call(document.querySelectorAll('[data-i18n-attr]'));
+  var ES = {};
+  textEls.forEach(function (el) { var k = el.getAttribute('data-i18n'); if (!(k in ES)) ES[k] = el.innerHTML; });
+  attrEls.forEach(function (el) {
+    el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+      var p = pair.split(':'); ES[p[1]] = el.getAttribute(p[0]);
+    });
+  });
+  var lang = 'es';
+  function t(key) { var d = lang === 'es' ? ES : T[lang]; return (d && d[key] != null) ? d[key] : (key in ES ? ES[key] : ES_EXTRA[key]); }
+  function tx(key) { return lang === 'es' ? ES_EXTRA[key] : T[lang][key]; }
+
+  // ── Copiar email y biografía ─────────────────────────────────────────────
+  function copier(btnId, key, getText, selectEl) {
+    var btn = document.getElementById(btnId);
+    btn.addEventListener('click', function () {
+      var done = function () { btn.textContent = tx('_copied'); setTimeout(function () { btn.textContent = t(key); }, 1800); };
+      var fallback = function () {
+        var range = document.createRange(); range.selectNodeContents(selectEl);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        btn.textContent = tx('_selected');
+      };
+      try { navigator.clipboard.writeText(getText()).then(done, fallback); } catch (e) { fallback(); }
+    });
+  }
+  var bio = document.getElementById('bio-text');
+  copier('copy-bio', 'copyBio', function () {
+    return Array.prototype.map.call(bio.querySelectorAll('p'), function (p) { return p.textContent.trim(); }).join('\n\n');
+  }, bio);
+  var email = document.getElementById('email');
+  copier('copy-email', 'copy', function () { return email.textContent.trim(); }, email);
+
+  // ── Cambiar de idioma (español por defecto) ──────────────────────────────
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang button'));
+  function setLang(next, remember) {
+    lang = (next === 'en' || next === 'de') ? next : 'es';
+    document.documentElement.lang = lang;
+    textEls.forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n')); });
+    attrEls.forEach(function (el) {
+      el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+        var p = pair.split(':'); el.setAttribute(p[0], t(p[1]));
+      });
+    });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)); });
+    if (remember) { try { localStorage.setItem('aac-lang', lang); } catch (e) { /* sin almacenamiento */ } }
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang'), true); }); });
+  var start = 'es';
+  var hash = (location.hash || '').slice(1);
+  if (hash === 'en' || hash === 'de' || hash === 'es') start = hash;
+  else { try { start = localStorage.getItem('aac-lang') || 'es'; } catch (e) { start = 'es'; } }
+  setLang(start, false);
+})();
+</script>
+</body>
+</html>

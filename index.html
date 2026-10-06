@@ -119,15 +119,21 @@ h2 { font-family: var(--display); font-weight: 400; font-size: 2rem; line-height
 .copy:hover { border-color: var(--accent); }
 
 /* Vídeos */
-.videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem; }
-.video { position: relative; display: flex; flex-direction: column; gap: 0.35rem; padding: 1.2rem 1.25rem 1.3rem; background: var(--surface); border: 1px solid var(--rule); text-decoration: none; color: var(--fg); overflow: hidden; transition: border-color .2s; }
-.video:hover { border-color: var(--accent); }
-.video .play { width: 2.4rem; height: 2.4rem; border: 1px solid var(--accent); border-radius: 50%; display: grid; place-items: center; margin-bottom: 0.6rem; color: var(--accent); transition: background-color .2s, color .2s; }
-.video:hover .play { background: var(--accent); color: var(--surface); }
-.video .play svg { width: 0.8rem; height: 0.8rem; fill: currentColor; margin-left: 2px; }
-.video .work { font-family: var(--display); font-size: 1.2rem; line-height: 1.25; }
+.videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+@media (max-width: 640px) { .videos { grid-template-columns: minmax(0, 1fr); } }
+.video { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+.video .frame { position: relative; display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: var(--stage); overflow: hidden; margin-bottom: 0.6rem; }
+.video .frame img, .video .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+.video .frame img { opacity: 0.9; transition: opacity .3s, transform .6s ease; }
+.video button.frame { padding: 0; border: 0; cursor: pointer; font: inherit; }
+.video button.frame:hover img { opacity: 1; transform: scale(1.02); }
+.video .play { position: absolute; left: 1rem; bottom: 1rem; width: 3rem; height: 3rem; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; display: grid; place-items: center; color: #fff; background: rgba(0,0,0,.35); transition: background-color .2s; }
+.video button.frame:hover .play { background: rgba(0,0,0,.6); }
+.video .play svg { width: 0.9rem; height: 0.9rem; fill: currentColor; margin-left: 3px; }
+.video .comp { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+.video .work { font-family: var(--display); font-size: 1.25rem; line-height: 1.25; }
 .video .where { color: var(--muted); font-size: 0.9rem; }
-.draft { display: inline-block; font-size: 0.78rem; color: var(--faint); border: 1px dashed var(--rule); padding: 0.15rem 0.5rem; margin-top: 0.4rem; align-self: flex-start; }
+.video .where a { color: inherit; }
 
 
 /* Contacto */
@@ -272,24 +278,42 @@ footer { background: var(--stage); color: var(--stage-muted); font-size: 0.85rem
   <section class="section" id="videos" aria-labelledby="h-videos">
     <header><h2 id="h-videos" data-i18n="videosTitle">Vídeos</h2><p class="label" data-i18n="videosLabel">En directo</p></header>
     <div class="videos">
-      <a class="video" href="#videos">
-        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
-        <span class="work" data-i18n="v1work">Vídeo de obra 1</span>
-        <span class="where" data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span>
-        <span class="draft" data-i18n="vDraft">Falta el enlace</span>
-      </a>
-      <a class="video" href="#videos">
-        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
-        <span class="work" data-i18n="v2work">Vídeo de obra 2</span>
-        <span class="where" data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span>
-        <span class="draft" data-i18n="vDraft">Falta el enlace</span>
-      </a>
-      <a class="video" href="#videos">
-        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
-        <span class="work" data-i18n="v3work">Vídeo de obra 3</span>
-        <span class="where" data-i18n="vVigo25">Final del Concurso Ciudad de Vigo, 2025</span>
-        <span class="draft" data-i18n="vDraft">Falta el enlace</span>
-      </a>
+      <article class="video" data-yt="C4fspuLKU10">
+        <button class="frame" type="button" aria-label="Domenico Scarlatti: Sonata en fa menor, K. 466" data-i18n-attr="aria-label:vK466Play">
+          <img src="https://i.ytimg.com/vi/C4fspuLKU10/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        </button>
+        <span class="comp">Domenico Scarlatti</span>
+        <span class="work" data-i18n="vK466">Sonata en fa menor, K. 466</span>
+        <span class="where"><span data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span> · <a href="https://youtu.be/C4fspuLKU10" target="_blank" rel="noopener" data-i18n="vYoutube">ver en YouTube</a></span>
+      </article>
+      <article class="video" data-yt="Mwk91m9nIlk">
+        <button class="frame" type="button" aria-label="Domenico Scarlatti: Sonata en fa mayor, K. 525" data-i18n-attr="aria-label:vK525Play">
+          <img src="https://i.ytimg.com/vi/Mwk91m9nIlk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        </button>
+        <span class="comp">Domenico Scarlatti</span>
+        <span class="work" data-i18n="vK525">Sonata en fa mayor, K. 525</span>
+        <span class="where"><span data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span> · <a href="https://youtu.be/Mwk91m9nIlk" target="_blank" rel="noopener" data-i18n="vYoutube">ver en YouTube</a></span>
+      </article>
+      <article class="video" data-yt="ylHnYDGP_eg">
+        <button class="frame" type="button" aria-label="Isaac Albéniz: Triana, de Iberia (cuaderno II)" data-i18n-attr="aria-label:vTrianaPlay">
+          <img src="https://i.ytimg.com/vi/ylHnYDGP_eg/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        </button>
+        <span class="comp">Isaac Albéniz</span>
+        <span class="work" data-i18n="vTriana">Triana, de <i>Iberia</i> (cuaderno II)</span>
+        <span class="where"><span data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span> · <a href="https://youtu.be/ylHnYDGP_eg" target="_blank" rel="noopener" data-i18n="vYoutube">ver en YouTube</a></span>
+      </article>
+      <article class="video" data-yt="7hj0ztuWt5k">
+        <button class="frame" type="button" aria-label="Serguéi Rachmaninov: Momentos musicales, op. 16" data-i18n-attr="aria-label:vRachPlay">
+          <img src="https://i.ytimg.com/vi/7hj0ztuWt5k/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        </button>
+        <span class="comp" data-i18n="cRachName">Serguéi Rachmaninov</span>
+        <span class="work" data-i18n="vRach">Momentos musicales, op. 16</span>
+        <span class="where"><span data-i18n="vVigo26">Concurso Internacional de Piano Ciudad de Vigo, 2026</span> · <a href="https://youtu.be/7hj0ztuWt5k" target="_blank" rel="noopener" data-i18n="vYoutube">ver en YouTube</a></span>
+      </article>
     </div>
   </section>
 
@@ -360,8 +384,9 @@ footer { background: var(--stage); color: var(--stage-muted); font-size: 0.85rem
       bio4: 'He has performed as a soloist and chamber musician in Spain, Germany, France and Hungary. As a composer he writes mainly for solo piano and has performed his own works in recitals in Spain and Germany. He is also working on piano transcriptions of Spanish music.',
       copyBio: 'Copy biography', copyBioNote: 'For concert programmes and press releases.',
       videosTitle: 'Videos', videosLabel: 'Live',
-      v1work: 'Performance video 1', v2work: 'Performance video 2', v3work: 'Performance video 3',
-      vVigo26: 'Ciudad de Vigo International Piano Competition, 2026', vVigo25: 'Final, Ciudad de Vigo Competition, 2025', vDraft: 'Link missing',
+      vK466: 'Sonata in F minor, K. 466', vK525: 'Sonata in F major, K. 525', vTriana: 'Triana, from <i>Iberia</i> (Book II)', vRach: 'Moments musicaux, Op. 16', cRachName: 'Sergei Rachmaninoff',
+      vK466Play: 'Play: Scarlatti, Sonata in F minor, K. 466', vK525Play: 'Play: Scarlatti, Sonata in F major, K. 525', vTrianaPlay: 'Play: Albéniz, Triana', vRachPlay: 'Play: Rachmaninoff, Moments musicaux, Op. 16',
+      vVigo26: 'Ciudad de Vigo International Piano Competition, 2026', vYoutube: 'watch on YouTube',
       contactTitle: 'Contact', contactLabel: 'Recitals and collaborations', copy: 'Copy',
       formIntro: 'Or write to me here:', formName: 'Name', formEmail: 'Your email', formMsg: 'Message', formSend: 'Send',
       _copied: 'Copied', _selected: 'Selected: copy it', _sending: 'Sending…', _sent: 'Thank you. Your message has been sent; I will reply soon.', _missing: 'Please fill in your name, a valid email and your message.', _failed: 'The message could not be sent. Please write to me directly at albertoabengozarcalonge@gmail.com.', _about: 'c.', _minutes: 'about {n} minutes'
@@ -392,8 +417,9 @@ footer { background: var(--stage); color: var(--stage-muted); font-size: 0.85rem
       bio4: 'Als Solist und Kammermusiker trat er in Spanien, Deutschland, Frankreich und Ungarn auf. Als Komponist schreibt er vor allem für Klavier solo und hat eigene Werke in seinen Konzerten in Spanien und Deutschland aufgeführt. Außerdem arbeitet er an Klaviertranskriptionen spanischer Musik.',
       copyBio: 'Biografie kopieren', copyBioNote: 'Für Programmhefte und Pressemitteilungen.',
       videosTitle: 'Videos', videosLabel: 'Live',
-      v1work: 'Werkvideo 1', v2work: 'Werkvideo 2', v3work: 'Werkvideo 3',
-      vVigo26: 'Internationaler Klavierwettbewerb Ciudad de Vigo, 2026', vVigo25: 'Finale, Wettbewerb Ciudad de Vigo, 2025', vDraft: 'Link fehlt',
+      vK466: 'Sonate f-Moll, K. 466', vK525: 'Sonate F-Dur, K. 525', vTriana: 'Triana, aus <i>Iberia</i> (Heft II)', vRach: 'Moments musicaux op. 16', cRachName: 'Sergei Rachmaninow',
+      vK466Play: 'Abspielen: Scarlatti, Sonate f-Moll, K. 466', vK525Play: 'Abspielen: Scarlatti, Sonate F-Dur, K. 525', vTrianaPlay: 'Abspielen: Albéniz, Triana', vRachPlay: 'Abspielen: Rachmaninow, Moments musicaux op. 16',
+      vVigo26: 'Internationaler Klavierwettbewerb Ciudad de Vigo, 2026', vYoutube: 'auf YouTube ansehen',
       contactTitle: 'Kontakt', contactLabel: 'Konzerte und Zusammenarbeit', copy: 'Kopieren',
       formIntro: 'Oder schreiben Sie mir hier:', formName: 'Name', formEmail: 'Ihre E-Mail', formMsg: 'Nachricht', formSend: 'Senden',
       _copied: 'Kopiert', _selected: 'Markiert: bitte kopieren', _sending: 'Wird gesendet…', _sent: 'Vielen Dank. Ihre Nachricht wurde gesendet; ich antworte bald.', _missing: 'Bitte geben Sie Ihren Namen, eine gültige E-Mail-Adresse und Ihre Nachricht an.', _failed: 'Die Nachricht konnte nicht gesendet werden. Bitte schreiben Sie mir direkt an albertoabengozarcalonge@gmail.com.', _about: 'ca.', _minutes: 'etwa {n} Minuten'
@@ -433,6 +459,22 @@ footer { background: var(--stage); color: var(--stage-muted); font-size: 0.85rem
   }, bio);
   var email = document.getElementById('email');
   copier('copy-email', 'copy', function () { return email.textContent.trim(); }, email);
+
+  // ── Vídeos: la miniatura se cambia por el reproductor al pulsar ──────────
+  Array.prototype.forEach.call(document.querySelectorAll('.video[data-yt] button.frame'), function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.parentNode.getAttribute('data-yt');
+      var holder = document.createElement('div');
+      holder.className = 'frame';
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      f.title = btn.getAttribute('aria-label');
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      holder.appendChild(f);
+      btn.replaceWith(holder);
+    });
+  });
 
   // ── Formulario de contacto (lo reenvía FormSubmit al correo de contacto) ──
   var form = document.getElementById('cform');
